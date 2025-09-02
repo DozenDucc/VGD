@@ -1,0 +1,30 @@
+export MUJOCO_GL=egl
+export PYOPENGL_PLATFORM=egl
+# If you need these (already in your ~/.bashrc), uncomment:
+# export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/bios/.mujoco/mujoco210/bin
+# export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib/nvidia
+
+grep -qxF 'export MUJOCO_GL=egl' ~/.bashrc || echo 'export MUJOCO_GL=egl' >> ~/.bashrc
+grep -qxF 'export PYOPENGL_PLATFORM=egl' ~/.bashrc || echo 'export PYOPENGL_PLATFORM=egl' >> ~/.bashrc
+# If needed (you likely already have these):
+grep -qxF 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/bios/.mujoco/mujoco210/bin' ~/.bashrc || echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/bios/.mujoco/mujoco210/bin' >> ~/.bashrc
+grep -qxF 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib/nvidia' ~/.bashrc || echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib/nvidia' >> ~/.bashrc
+
+# Apply immediately
+source ~/.bashrc
+
+#TEST
+
+MUJOCO_GL=egl PYOPENGL_PLATFORM=egl python3 - <<'PY'
+import os
+os.environ.setdefault("MUJOCO_GL","egl")
+os.environ.setdefault("PYOPENGL_PLATFORM","egl")
+from env_utils import make_robomimic_env, ObservationWrapperRobomimic
+env = make_robomimic_env(env='can', normalization_path='./dppo/log/robomimic/can/normalization.npz',
+                         low_dim_keys=['robot0_eef_pos','robot0_eef_quat','robot0_gripper_qpos','object'],
+                         dppo_path='./dppo')
+env = ObservationWrapperRobomimic(env, reward_offset=1)
+obs = env.reset()
+print('env ok, obs shape:', obs.shape)
+env.close()
+PY

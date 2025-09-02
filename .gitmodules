@@ -1,0 +1,6 @@
+[submodule "stable-baselines3"]
+	path = stable-baselines3
+	url = git@github.com:DozenDucc/stable-baselines3.git
+[submodule "dppo"]
+	path = dppo
+	url = git@github.com:DozenDucc/dppo.git
