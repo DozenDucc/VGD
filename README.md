@@ -23,14 +23,14 @@ cd stable-baselines3
 pip install -e .
 cd ..
 ```
-If you need pretrained diffusion policy checkpoints for the Robomimic and Gym experiments, you can download them from our shared drive and place them into `./dppo/log`.
 
 ## Running VGD
 To run VGD on Robomimic, call
 ```
-python train_vgd.py --config-path=cfg/robomimic --config-name=vgd_transport_guided.yaml
+python train_vgd.py --config-path=cfg/robomimic --config-name=vgd_can_guided.yaml
 ```
+Replace the config file above with the desired one. 
 
 
 ## Acknowledgements
-This repository builds on [Stable Baselines3](https://github.com/DLR-RM/stable-baselines3) and [DPPO](https://github.com/irom-princeton/dppo).
+This repository builds on [Stable Baselines3](https://github.com/DLR-RM/stable-baselines3) and [DPPO](https://github.com/irom-princeton/dppo). Parts of code adapted from [DSRL](https://github.com/ajwagen/dsrl)
