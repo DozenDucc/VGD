@@ -6,8 +6,8 @@ cd VGD
 ```
 2. Create conda environment
 ```
-conda create -n dsrl python=3.9 -y
-conda activate dsrl
+conda create -n vgd python=3.9 -y
+conda activate vgd
 ```
 3. Install our fork of DPPO 
 ```
