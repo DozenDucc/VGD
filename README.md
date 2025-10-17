@@ -32,5 +32,15 @@ python train_vgd.py --config-path=cfg/robomimic --config-name=vgd_can_guided.yam
 Replace the config file above with the desired one. 
 
 
+## Citation
+If you use this code, please cite:
+
+@inproceedings{ye2025vgd,
+  title     = {Steering Diffusion Policies with Value-Guided Denoising},
+  author    = {Ye, Hanming},
+  booktitle = {NeurIPS 2025 Workshop on Embodied World Models for Decision Making},
+  year      = {2025}
+}
+
 ## Acknowledgements
 This repository builds on [Stable Baselines3](https://github.com/DLR-RM/stable-baselines3) and [DPPO](https://github.com/irom-princeton/dppo). Parts of code adapted from [DSRL](https://github.com/ajwagen/dsrl)
